@@ -1,55 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-  <link rel="stylesheet" type="text/css" href="main.css">
-  <title>TmcTempateBuilder</title>
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<title>TmcTempateBuilder</title>
 </head>
 <body>
-<form>
-  <textarea id="modal_template_editor_container"></textarea>
-  <input type="submit" name="">
-</form>
-<div id="panel">
-	<h3>Инструментарий</h3>
-		<div id="flex">
-		<button>V1</button>
-		<button>V1</button>
-		<button>V3</button>
-		<button>V4</button>
-	</div>
-	<div id="flex">
-		<button>+</button>
-		<button>-</button>
-		<button>%</button>
-		<button>*</button>
-	</div>
+<div class="template-builder">
+	<form>
+		<textarea id="modal_template_editor_container"></textarea>
+		<input type="submit" name="">
+	</form>
+	<div class="adjust-panel">
+		<h3>Инструментарий</h3>
+		<div class="adjust-panel__variables-container">
+			<button>V1</button>
+			<button>V1</button>
+			<button>V3</button>
+			<button>V4</button>
+		</div>
+		<div class="adjust-panel__control-elements">
+			<button>+</button>
+			<button>-</button>
+			<button>%</button>
+			<button>*</button>
+		</div>
 
-	<div id='res'>
-		v1*v3+v4*3
+		<div id='res'>
+			v1*v3+v4*3
+		</div>
 	</div>
 </div>
 
-</script>
 </body>
 </html>
-
-<style type="text/css">
-	
-	#flex {
-		display: flex;
-	}
-
-	#flex button {
-		margin: 2px;
-		background: green;
-		padding: 10px;
-	}
-
-	.myclass {
-		display: inline-block;
-		width: 100px;
-	}
-
-</style>

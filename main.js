@@ -9,7 +9,7 @@ class TemplateManager {
     }
 
     init() {
-      
+
     }
 
     /**
@@ -54,6 +54,7 @@ const   toolBarOption = "undo redo | variables |" +
 
 class TmcEditor {
 
+
     /**
      * init editor params
      */
@@ -80,12 +81,36 @@ class TmcEditor {
             text: 'Добавить переменную',
             icon: false,
             onclick:  () => {
-                console.log('variables')
+                let newSystemVaraible = this.variableStorage.add();
                 editor.insertContent(`<p> editor contender </p>`);
             }
         })
     }
 }
+
+
+/**
+ *
+ */
+class variableStorage {
+    constructor() {
+        this._variablePrefix = "R"
+        this._storage = {};
+        this.__lastVaiableNomber = 0;
+    }
+
+    /**
+     * add next variable;
+     */
+    add() {
+       let nextVariableName =  Object.keys(a).length == 0 ? `${this._variablePrefix}1`: `${this._variablePrefix}${this._lastVaiableNomber++}`
+    }
+
+    delete(variable) {
+
+    }
+}
+
 
 let templateMagager = new TemplateManager({}, new TmcEditor)
 templateMagager.run()
