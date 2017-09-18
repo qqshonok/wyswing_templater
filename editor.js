@@ -1,15 +1,10 @@
-const   toolBarOption = "undo redo | variables |" +
-    "fontselect fontsizeselect lineheightselect | bold italic | alignleft " +
-    "aligncenter alignright alignjustify | bullist " +
-    "numlist outdent indent | pagebreak | " +
-    "fullscreen  |";
+const   toolBarOption = "undo redo  variables math_form";
 
-const plugins = "table"
+const plugins = "table noneditable"
 const fonts = ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css']
 class TmcEditor {
-
     /**
-     * @param variableStor
+     * @param variableStorage
      */
     constructor(variableStorage) {
         /**
@@ -29,7 +24,6 @@ class TmcEditor {
             plugins: plugins,
             theme: 'modern',
             image_advtab: true,
-            content_css: fonts,
             content_css: ['tmc.css'],
             setup: _self._addVariablesButton.bind(this),
         });
@@ -42,12 +36,30 @@ class TmcEditor {
     _addVariablesButton(editor) {
         let _self = this
         editor.addButton('variables', {
-            text: 'Добавить переменную',
+            text: 'System',
             icon: false,
             onclick:  () => {
-               // _self._systemVariable.dispatch({type: "ADD"})
-                editor.insertContent(`<p> editor contender </p>`)
+                _self._systemVariable.dispatch({type: "ADD"})
+                const lastAddedVariable = [..._self._systemVariable.getState()].pop()
+                editor.insertContent(`<span class="variable mceNonEditable">${lastAddedVariable.name}</span>`)
             }
-        })
+        }),
+        editor.addButton('math_form', {
+            text: 'Math',
+            icon: false,
+            onclick:  () => {
+                let mathFormula  = tinymce.activeEditor.dom.create('span',{'class' : 'mceNonEditable math','contenteditable': false}, 'MATH')
+                mathFormula.onClick=  () => console.log('s')
+                tinymce.activeEditor.selection.setNode(mathFormula);
+            }
+        }),
+         editor.on("click", function(editor)  {
+            let classList = (editor.target.classList.value)
+            if(classList.indexOf('math') !==-1) {
+                document.querySelector('.adjust-panel').style.display == 'block' ?
+                    document.querySelector('.adjust-panel').style.display = 'none' :  document.querySelector('.adjust-panel').style.display = 'block' 
+
+            }
+        });
     }
 }

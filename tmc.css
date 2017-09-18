@@ -11,3 +11,14 @@
     border: 1px solid black;
     border-color: #3FAECA
 }
+
+.math,.variable {
+    background: cyan;
+    color: black;
+    margin: 3px;
+    font-size: 20px;
+}
+
+.variable {
+    background: orange;
+}
