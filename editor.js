@@ -4,6 +4,8 @@ const   toolBarOption = "undo redo | variables |" +
     "numlist outdent indent | pagebreak | " +
     "fullscreen  |";
 
+const plugins = "table"
+
 
 
 class TmcEditor {
@@ -17,7 +19,7 @@ class TmcEditor {
             selector: "textarea#modal_template_editor_container",
             height: 250,
             toolbar1: toolBarOption,
-            plugins: "table",
+            plugins: plugins,
             theme: 'modern',
             image_advtab: true,
             content_css: [
@@ -34,8 +36,7 @@ class TmcEditor {
             text: 'Добавить переменную',
             icon: false,
             onclick:  () => {
-                let newSystemVaraible = this.variableStorage.add();
-                editor.insertContent(`<p> editor contender </p>`);
+                editor.insertContent(`<p> editor contender </p>`)
             }
         })
     }

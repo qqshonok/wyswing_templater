@@ -9,7 +9,7 @@ class TemplateManager {
     }
 
     /**
-     * TODO 
+     * TODO
      */
     init() {}
 
@@ -34,7 +34,7 @@ class TemplateManager {
      * @private
      */
     _bindEvents() {
-        console.log('bind events')
+       // console.log('bind events')
     }
 
     /**
