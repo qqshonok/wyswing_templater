@@ -14,17 +14,7 @@ const variableReducer = (state = 0, action)  =>  {
     return -1
 }
 
-let newStorage = createStore(variableReducer)
-
-newStorage.subscribe(() => console.log(newStorage.getState()))
-
-newStorage.dispatch({type: "ADD"})
-newStorage.dispatch({type: "DELETE"})
-newStorage.dispatch({type: "FALSE"})
-
-
-
-
-let templateManager = new TemplateManager({}, new TmcEditor)
+let variableStor = createStore(variableReducer)
+let templateManager = new TemplateManager({}, new TmcEditor, variableStor,mathForms = false)
 templateManager.run()
 
