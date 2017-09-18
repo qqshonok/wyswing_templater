@@ -1,20 +1,29 @@
-const variableReducer = (state = 0, action)  =>  {
+const variableReducer = (state = {lastAddVariableIndex : 0}, action)  =>  {
+    const variablePrefix = 'V'
+
+    /**
+     * index last added variable
+     * @type {number}
+     */
     switch (action.type) {
         case 'ADD' :
-            console.log('ADD ACTION')
-            let test = 15 + 25
-            return test
+            let newState = Object.assign(state)
+            const addVariableIndex =  newState.lastAddVariableIndex + 1
+            let newVariable = {
+                id: addVariableIndex,
+                name : `${variablePrefix}${addVariableIndex}`,
+                value: ''
+            }
+            newState.lastAddVariableIndex = addVariableIndex
+            newState[addVariableIndex] = newVariable
+            return newState
         case 'DELETE' :
-            console.log('DELETE ACTION')
-            return 100
+            return state
         default:
-            console.log('DEFAULT ACTION')
-            return 0
+           return state
     }
-    return -1
 }
-
-let variableStor = createStore(variableReducer)
-let templateManager = new TemplateManager({}, new TmcEditor, variableStor,mathForms = false)
+let variableStorage = createStore(variableReducer)
+let templateManager = new TemplateManager({}, new TmcEditor(variableStorage), variableStorage , mathForms = false)
 templateManager.run()
 

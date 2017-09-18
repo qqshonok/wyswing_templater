@@ -6,9 +6,9 @@ class TemplateManager {
      * @param editor editor  editor plugin ( begin from tiny MCE :)) )
      * @param systemVar system variable need for formula creating
      */
-    constructor(props,editor,systemVarsReducer) {
+    constructor(props,editor,systemVarsStorage) {
         this._props = props
-        this._systemVars = systemVarsReducer
+        this._systemVarsStorage = systemVarsStorage
         this.init()
         this._editor = editor;
     }
@@ -17,10 +17,7 @@ class TemplateManager {
      * TODO
      */
     init() {
-        this._systemVars.subscribe(() => console.log(this._systemVars.getState()))
-        this._systemVars.dispatch({type: "ADD"})
-        this._systemVars.dispatch({type: "DELETE"})
-        this._systemVars.dispatch({type: "FALSE"})
+        this._systemVarsStorage.subscribe(() => console.log(this._systemVarsStorage.getState()))
     }
 
     /**
