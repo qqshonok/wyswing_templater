@@ -45,7 +45,7 @@ class TmcEditor {
             text: 'Добавить переменную',
             icon: false,
             onclick:  () => {
-                _self._systemVariable.dispatch({type: "ADD"})
+               // _self._systemVariable.dispatch({type: "ADD"})
                 editor.insertContent(`<p> editor contender </p>`)
             }
         })
