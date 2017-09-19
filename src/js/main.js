@@ -5,10 +5,14 @@ let listStorage = createStore(listReducer)
 */
 
 window.onload = () => {
-    const editor = new TmcEditor();
-    let store = createStore(reducersStorage)
-    let templateManager = new TemplateManager(store, editor)
-    templateManager.run()
+    //try {
+        const editor = new TmcEditor();
+        let store = createStore(reducersStorage)
+        let templateManager = new TemplateManager(store, editor)
+        templateManager.run()
+  /*  } catch (e) {
+        console.error('some error')
+    }*/
 }
 
 

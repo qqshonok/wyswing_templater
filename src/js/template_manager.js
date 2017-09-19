@@ -9,6 +9,7 @@ class TemplateManager {
         console.log('APPLICATION START')
         this._editor = editor
         this._store = store
+        this._editor.setStorage(this._store)
         this.init()
     }
 
@@ -16,7 +17,7 @@ class TemplateManager {
      * TODO
      */
     init() {
-       console.log(this._store)
+       console.log(this._store.getState())
     }
 
     /**

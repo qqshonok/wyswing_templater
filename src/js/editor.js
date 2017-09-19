@@ -7,12 +7,8 @@ const fonts = ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//ww
 class TmcEditor {
 
     /**
-     * editor constructor
+     * init editor
      */
-    constructor(store) {
-        this._store = store
-    }
-
     init() {
         let _self = this
         tinymce.init({
@@ -25,9 +21,17 @@ class TmcEditor {
             content_css: ['src/css/tmc.css'],
             setup: _self._addVariablesButton.bind(this),
         });
-
-
     }
+
+
+    /**
+     * set storage
+     */
+    setStorage(storage) {
+        this._storage = storage
+    }
+
+
 
     /**
      * @param editor
@@ -39,8 +43,9 @@ class TmcEditor {
             text: 'System',
             icon: false,
             onclick:  () => {
-                _self._systemVariable.dispatch({type: "ADD"})
-                const lastAddedVariable = [..._self._systemVariable.getState()].pop()
+                _self._storage.dispatch({type: "ADD_VARIABLE"})
+                let state = _self._storage.getState().variableReducer
+                const lastAddedVariable = [...state].pop()
                 editor.insertContent(`<span class="variable mceNonEditable">${lastAddedVariable.name}</span>`)
             }
         })

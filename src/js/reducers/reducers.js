@@ -8,7 +8,7 @@ const variableReducer =  (state = [], action) => {
     const variablePrefix = 'V'
 
     switch (action.type) {
-        case 'ADD' :
+        case 'ADD_VARIABLE' :
             let newState = [...state]
             const checkEmpty = Object.keys(state).length === 0
             const lastAddedVariableIndex = checkEmpty ? 0 : [...newState].pop().id
