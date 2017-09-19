@@ -21,7 +21,7 @@ class TmcEditor {
             plugins: plugins,
             theme: 'modern',
             image_advtab: true,
-            content_css: ['tmc.css'],
+            content_css: ['src/css/tmc.css'],
             setup: _self._addVariablesButton.bind(this),
         });
 
