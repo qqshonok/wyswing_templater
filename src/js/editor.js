@@ -1,9 +1,5 @@
 const   toolBarOption = "undo redo  variables math_form select_field";
-
 const plugins = "table noneditable"
-const fonts = ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css']
-
-
 class TmcEditor {
 
     /**
@@ -26,11 +22,11 @@ class TmcEditor {
 
     /**
      * set storage
+     * @param storage
      */
     setStorage(storage) {
         this._storage = storage
     }
-
 
 
     /**
@@ -43,19 +39,20 @@ class TmcEditor {
             text: 'System',
             icon: false,
             onclick:  () => {
-                _self._storage.dispatch({type: "ADD_VARIABLE"})
+                _self._storage.dispatch({type: ADD_VAR})
                 let state = _self._storage.getState().variableReducer
                 const lastAddedVariable = [...state].pop()
                 editor.insertContent(`<span class="variable mceNonEditable">${lastAddedVariable.name}</span>`)
             }
         })
-        /*,
+        ,
         editor.addButton('math_form', {
             text: 'Math',
             icon: false,
             onclick:  () => {
-                _self._systemMath.dispatch({type: "ADD"})
-                const lastAddedMath = [..._self._systemMath.getState()].pop()
+                _self._storage.dispatch({type: ADD_MATH})
+                let state = _self._storage.getState().mathReducer
+                const lastAddedMath = [...state].pop()
                 editor.insertContent(`<span class="math mceNonEditable">${lastAddedMath.name}</span>`)
             }
         }),
@@ -63,8 +60,9 @@ class TmcEditor {
             text: 'List',
             icon: false,
             onclick:  () => {
-                _self._systemList.dispatch({type: "ADD"})
-                const lastAddedList = [..._self._systemList.getState()].pop()
+                _self._storage.dispatch({type: ADD_LIST})
+                let state = _self._storage.getState().listReducer
+                const lastAddedList = [...state].pop()
                 editor.insertContent(`<span class="list mceNonEditable">${lastAddedList.name}</span>`)
             }
         }),
@@ -76,6 +74,6 @@ class TmcEditor {
                     document.querySelector('.adjust-panel').style.display = 'none' :  document.querySelector('.adjust-panel').style.display = 'block' 
 
             }
-        });*/
+        });
     }
 }
