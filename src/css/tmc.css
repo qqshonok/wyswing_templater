@@ -1,0 +1,34 @@
+
+.mce-item-table {
+    border-collapse: collapse;
+}
+
+.mce-item-table {
+    border: none;
+}
+
+.mce-item-table td {
+    border: 1px solid black;
+    border-color: #3FAECA
+}
+
+.math,.variable,.list {
+    background: cyan;
+    color: black;
+    margin: 3px;
+    font-size: 18px;
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.variable {
+    background: orange;
+}
+
+.list {
+    background: lightcoral;
+}
+
+.mceNonEditable:hover {
+    border: none;
+}
