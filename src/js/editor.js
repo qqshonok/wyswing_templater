@@ -2,14 +2,15 @@ const   toolBarOption = "undo redo  variables math_form select_field";
 
 const plugins = "table noneditable"
 const fonts = ['//fonts.googleapis.com/css?family=Lato:300,300i,400,400i', '//www.tinymce.com/css/codepen.min.css']
+
+
 class TmcEditor {
+
     /**
-     * @param variableStorage
+     * editor constructor
      */
-    constructor(variableStorage,mathStorage,listStorage) {
-        this._systemVariable = variableStorage
-        this._systemMath = mathStorage
-        this._systemList = listStorage
+    constructor(store) {
+        this._store = store
     }
 
     init() {
@@ -25,8 +26,7 @@ class TmcEditor {
             setup: _self._addVariablesButton.bind(this),
         });
 
-        this._systemMath.subscribe(() => console.log(this._systemMath.getState()))
-        this._systemList.subscribe(() => console.log(this._systemList.getState()))
+
     }
 
     /**
@@ -43,7 +43,8 @@ class TmcEditor {
                 const lastAddedVariable = [..._self._systemVariable.getState()].pop()
                 editor.insertContent(`<span class="variable mceNonEditable">${lastAddedVariable.name}</span>`)
             }
-        }),
+        })
+        /*,
         editor.addButton('math_form', {
             text: 'Math',
             icon: false,
@@ -70,6 +71,6 @@ class TmcEditor {
                     document.querySelector('.adjust-panel').style.display = 'none' :  document.querySelector('.adjust-panel').style.display = 'block' 
 
             }
-        });
+        });*/
     }
 }

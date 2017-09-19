@@ -1,23 +1,22 @@
 class TemplateManager {
 
     /**
-     *
-     * @param props
-     * @param editor editor  editor plugin ( begin from tiny MCE :)) )
-     * @param systemVar system variable need for formula creating
+     * intit application params
+     * @param store
+     * @param editor
      */
-    constructor(props,editor,systemVarsStorage) {
-        this._props = props
-        this._systemVarsStorage = systemVarsStorage
+    constructor(store,editor) {
+        console.log('APPLICATION START')
+        this._editor = editor
+        this._store = store
         this.init()
-        this._editor = editor;
     }
 
     /**
      * TODO
      */
     init() {
-        this._systemVarsStorage.subscribe(() => console.log(this._systemVarsStorage.getState()))
+       console.log(this._store)
     }
 
     /**

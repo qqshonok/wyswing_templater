@@ -1,5 +1,12 @@
-if(typeof combineReducers === 'function') {
+/**
+ * define reducer storage in global
+ * @type {Function|*}
+ */
 
-} else throw Error('combine reducer is not function')
+const reducersStorage = combineReducers({
+  mathReducer,
+  variableReducer,
+  listReducer
+})
 
 
